@@ -24,10 +24,10 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'license_number' => 'required|string|max:50',
-            'golf_index' => 'required|string|max:10',
+            'license_number' => 'required|string',
+            'golf_index' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
         $avatarPath = null;
