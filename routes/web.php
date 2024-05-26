@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\EventController;
 
+
+
+Route::get('/', [EventController::class, 'show'])->name('welcome');
+
 Route::get('/admin/events', [EventController::class,'index'])->name('events.index');
 Route::get('/admin/create', [EventController::class,'create'])->name('events.create');
 Route::post('/admin/events', [EventController::class,'store'])->name('events.store');
@@ -25,6 +29,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+
+
+
+
 
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
