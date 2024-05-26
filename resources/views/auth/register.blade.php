@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
+@include('header')
     <h1>Register</h1>
 
     @if (session('success'))
@@ -50,5 +45,5 @@
 
         <button type="submit">Register</button>
     </form>
-</body>
-</html>
+
+    include('footer')
