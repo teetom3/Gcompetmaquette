@@ -1,18 +1,27 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class AdminMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next): RedirectResponse
     {
-        if (Auth::check() && Auth::user()->is_admin === 1) {
+        $user = $request->user();
+        if ($user && $user->is_admin === 1) { // Assurez-vous que la colonne dans votre base de données est nommée correctement
             return $next($request);
         }
-
         return redirect()->route('welcome')->with('error', 'Vous n\'avez pas accès à cette page.');
     }
 }
+

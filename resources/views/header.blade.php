@@ -14,10 +14,10 @@
  
   <nav class="nav_link">
     <ul>
-      <li class="hideOnMobile"><a href="">Accueil</a></li>
+      <li class="hideOnMobile"><a href="{{ route('welcome') }}">Accueil</a></li>
       
       <li class="hideOnMobile"><a href="">Liste des Joueurs</a></li>
-      <li class="hideOnMobile"><a href="">Mon Profile</a></li>
+      <li class="hideOnMobile"><a href="{{ route('profile.edit') }}">Mon Profile</a></li>
          <!-- Formulaire de déconnexion caché -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
@@ -31,13 +31,13 @@
     </a>
       <li class="open_nav"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M130-248v-75h700v75H130Zm0-195v-75h700v75H130Zm0-195v-75h700v75H130Z"/></svg></a></li>
     </ul>
-    
+    @if(Auth::check() && Auth::user()->is_admin == 1)
     <ul class="admin_nav">
-      <li class="hideOnMobile"><a href="">Dashboard</a></li>
-      <li class="hideOnMobile"><a href="">Créer un Evenement</a></li>
-      <li class="hideOnMobile"><a href="">Manager utilisateurs</a></li>
+      <li class="hideOnMobile"><a href="{{ route('events.index') }}">Dashboard</a></li>
+      <li class="hideOnMobile"><a href="{{ route('events.create') }}">Créer un Evenement</a></li>
+      <li class="hideOnMobile"><a href="{{ route('admin.users.index') }}">Manager utilisateurs</a></li>
       </ul>
      
-
+    @endif
 
   </nav>

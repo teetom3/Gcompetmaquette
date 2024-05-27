@@ -10,7 +10,7 @@
                 <p>Date: {{ $event->date_event }}</p>
                 <p>Catégorie: {{ $event->category }}</p>
                 <p>Places disponibles: {{ $event->places_available }}</p>
-                <a href="{{ route('event.show', $event->id) }}">En savoir plus</a>
+                <a href="{{ route('events.show', $event->id) }}">En savoir plus</a>
             </div>
         @endforeach
     </div>

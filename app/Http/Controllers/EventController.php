@@ -63,8 +63,22 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $events=Event::all();
+        return view('event.index', compact('events'));
+    }
+
+    public function showEvents(Event $event)
+    {
+        $events=Event::all();
         return view('welcome', compact('events'));
     }
+
+
+    public function showOneEvent($id)
+    {
+        $event=Event::findOrFail($id);
+        return view('events.show', compact('event'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
