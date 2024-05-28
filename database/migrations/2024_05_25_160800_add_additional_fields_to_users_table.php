@@ -13,14 +13,14 @@ class AddAdditionalFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('surname');
-            $table->date('date_of_birth');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('license_number');
-            $table->string('golf_index');
-            $table->string('avatar')->nullable();
-            $table->boolean('is_admin')->default(0);
+            //ph $table->string('surname');
+           // $table->date('date_of_birth');
+            //$table->string('phone');
+            //$table->string('address');
+            //$table->string('license_number');
+            //$table->string('golf_index');
+            //$table->string('avatar')->nullable();
+            //$table->boolean('is_admin')->default(0);
            // $table->string('password'); // Ajoute le champ password
         });
     }

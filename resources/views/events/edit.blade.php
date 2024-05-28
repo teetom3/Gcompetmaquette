@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Modifier un événement</title>
-</head>
-<body>
+@include('header')
     <h1>Modifier un événement</h1>
 
     @if (session('success'))
@@ -39,5 +34,4 @@
 
         <button type="submit">Modifier</button>
     </form>
-</body>
-</html>
+@include('footer')

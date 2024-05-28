@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventRegistrationController;
 
 
 
@@ -28,6 +29,11 @@ Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('even
 Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
 Route::get('/events/{id}', [EventController::class, 'showOneEvent'])->name('events.show');
 
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])->name('events.register');
+    Route::post('/events/{event}/unregister', [EventRegistrationController::class, 'unregister'])->name('events.unregister');
 });
 
 

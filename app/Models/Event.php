@@ -20,4 +20,13 @@ protected $table = 'events';
         'image',
         'is_active'
     ];
+
+// app/Models/Event.php
+
+public function users()
+{
+    return $this->belongsToMany(User::class, 'event_user');
+}
+
+
 }

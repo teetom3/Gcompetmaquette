@@ -16,7 +16,7 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
         $user = $request->user();
         if ($user && $user->is_admin === 1) { // Assurez-vous que la colonne dans votre base de données est nommée correctement

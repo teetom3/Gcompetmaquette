@@ -1,4 +1,4 @@
-
+@include('header')
 
     <h1>Liste des utilisateurs</h1>
 
@@ -22,10 +22,10 @@
                     <td>{{ $user->name }} {{ $user->surname }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="">Modifier</a>
+                        <a href="{{ route('admin.users.edit', $user) }}">Modifier</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-
+@include('footer')

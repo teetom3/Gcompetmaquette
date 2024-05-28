@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Modifier Utilisateur</title>
-</head>
-<body>
+@include('header')
     <h1>Modifier Utilisateur</h1>
 
     @if (session('success'))
@@ -45,5 +40,4 @@
 
         <button type="submit">Mettre à jour</button>
     </form>
-</body>
-</html>
+@include('footer')

@@ -1,4 +1,4 @@
-
+@include('header')
 
 <div class="container">
     <h1>Liste des Joueurs</h1>
@@ -33,3 +33,4 @@
 
 
 
+@include('footer')

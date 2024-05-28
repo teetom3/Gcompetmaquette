@@ -52,4 +52,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // app/Models/User.php
+
+public function events()
+{
+    return $this->belongsToMany(Event::class, 'event_user');
+}
+
+
 }
