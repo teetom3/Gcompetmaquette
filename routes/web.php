@@ -12,12 +12,16 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventRegistrationController;
+use App\Http\Middleware\AuthenticateOnly;
 
-
+Route::middleware([AuthenticateOnly::class])->group(function (){
 
 Route::get('/', [EventController::class, 'showEvents'])->name('welcome');
 
 Route::get('players', [PlayerController::class, 'index'])->name('players.index');
+Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])->name('events.register');
+Route::post('/events/{event}/unregister', [EventRegistrationController::class, 'unregister'])->name('events.unregister');
+});
 
 Route::middleware(AdminMiddleware::class)->group(function (){
 
@@ -32,8 +36,7 @@ Route::get('/events/{id}', [EventController::class, 'showOneEvent'])->name('even
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])->name('events.register');
-    Route::post('/events/{event}/unregister', [EventRegistrationController::class, 'unregister'])->name('events.unregister');
+    
 });
 
 

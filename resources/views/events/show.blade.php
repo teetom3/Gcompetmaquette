@@ -49,6 +49,34 @@
     </a>
         @endif
     @endauth
+
+
+
+    <h2>Joueurs Inscrits</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>Prénom</th>
+                <th>Index</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($event->users as $user)
+                <tr>
+                    <td>
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->firstname }}" width="50" height="50">
+                    </td>
+                    <td>{{ $user->surname }}</td>
+                    <td>{{ $user->golf_index }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">Aucun joueur inscrit.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
     
     </div>
 

@@ -75,7 +75,7 @@ class EventController extends Controller
 
     public function showOneEvent($id)
     {
-        $event=Event::findOrFail($id);
+        $event=Event::with('users')->findOrFail($id);
         return view('events.show', compact('event'));
     }
 

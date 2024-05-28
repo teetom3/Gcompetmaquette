@@ -16,7 +16,7 @@
                 <tr>
                     <td>
                         @if($player->avatar)
-                            <img src="{{ asset('storage/avatars/' . $player->avatar) }}" alt="Avatar" width="50">
+                            <img src="{{ asset('storage/' . $player->avatar) }}" alt="Avatar" width="50">
                         @else
                             <img src="{{ asset('images/default-avatar.png') }}" alt="Avatar" width="50">
                         @endif
