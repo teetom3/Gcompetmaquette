@@ -16,7 +16,7 @@
     <ul>
       <li class="hideOnMobile"><a href="{{ route('welcome') }}">Accueil</a></li>
       
-      <li class="hideOnMobile"><a href="">Liste des Joueurs</a></li>
+      <li class="hideOnMobile"><a href="{{route('players.index')}}">Liste des Joueurs</a></li>
       <li class="hideOnMobile"><a href="{{ route('profile.edit') }}">Mon Profile</a></li>
          <!-- Formulaire de déconnexion caché -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -41,3 +41,5 @@
     @endif
 
   </nav>
+
+</header>

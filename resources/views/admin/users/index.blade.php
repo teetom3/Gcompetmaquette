@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin - Utilisateurs</title>
-</head>
-<body>
+
+
     <h1>Liste des utilisateurs</h1>
 
     @if (session('success'))
@@ -26,11 +22,10 @@
                     <td>{{ $user->name }} {{ $user->surname }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="{{ route('admin.users.edit', $user) }}">Modifier</a>
+                        <a href="">Modifier</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+

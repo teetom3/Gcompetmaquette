@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\EventController;
 use \App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\PlayerController;
 //authentification 
 
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -15,9 +16,9 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [EventController::class, 'showEvents'])->name('welcome');
 
+Route::get('players', [PlayerController::class, 'index'])->name('players.index');
 
-
-Route::middleware(['auth'])->group(function (){
+Route::middleware(AdminMiddleware::class)->group(function (){
 
 Route::get('/admin/events', [EventController::class,'index'])->name('events.index');
 Route::get('/admin/create', [EventController::class,'create'])->name('events.create');
