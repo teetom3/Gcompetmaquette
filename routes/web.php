@@ -21,6 +21,7 @@ Route::get('/', [EventController::class, 'showEvents'])->name('welcome');
 Route::get('players', [PlayerController::class, 'index'])->name('players.index');
 Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])->name('events.register');
 Route::post('/events/{event}/unregister', [EventRegistrationController::class, 'unregister'])->name('events.unregister');
+Route::get('/events/{id}', [EventController::class, 'showOneEvent'])->name('events.show');
 });
 
 Route::middleware(AdminMiddleware::class)->group(function (){
@@ -31,7 +32,16 @@ Route::post('/admin/events', [EventController::class,'store'])->name('events.sto
 
 Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
 Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
-Route::get('/events/{id}', [EventController::class, 'showOneEvent'])->name('events.show');
+
+
+
+Route::get('events/{event}/admin_register', [EventController::class, 'adminRegisterForm'])->name('events.admin.register');
+Route::post('events/{event}/admin_register', [EventController::class, 'adminRegisterPlayers'])->name('events.admin.registerPlayers');
+Route::delete('events/{event}/admin_unregister/{user}', [EventController::class, 'adminUnregisterPlayer'])->name('events.admin.unregisterPlayer');
+
+
+
+Route::get('events/{event}/download', [EventController::class, 'downloadRegistrations'])->name('events.downloadRegistrations');
 
 });
 

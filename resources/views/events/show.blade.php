@@ -50,6 +50,11 @@
         @endif
     @endauth
 
+    @if (Auth::check() && Auth::user()->is_admin)
+        <a href="{{ route('events.admin.register', $event->id) }}" class="btn btn-primary">Inscrire des joueurs</a>
+        <a href="{{ route('events.downloadRegistrations', $event->id) }}" class="btn btn-secondary">Récupérer les inscrits</a>
+    @endif
+
 
 
     <h2>Joueurs Inscrits</h2>

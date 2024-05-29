@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 
 class EventController extends Controller
@@ -125,4 +126,51 @@ class EventController extends Controller
     {
         //
     }
+
+
+
+    public function adminRegisterForm(Event $event)
+{
+    $users = User::whereDoesntHave('events', function ($query) use ($event) {
+        $query->where('events.id', $event->id);
+    })->get();
+
+    return view('events.admin_register', compact('event', 'users'));
+}
+
+public function adminRegisterPlayers(Request $request, Event $event)
+{
+    $user = User::findOrFail($request->input('user_id'));
+    $event->users()->attach($user->id);
+
+    $event->decrement('places_available');
+
+    return redirect()->route('events.admin.register', $event->id)->with('success', 'Joueur inscrit avec succès.');
+}
+
+public function adminUnregisterPlayer(Event $event, User $user)
+{
+    $event->users()->detach($user->id);
+
+    $event->increment('places_available');
+
+    return redirect()->route('events.admin.register', $event->id)->with('success', 'Joueur désinscrit avec succès.');
+}
+
+public function downloadRegistrations(Event $event)
+{
+    $users = $event->users()->select('license_number')->get();
+
+    $content = "";
+    foreach ($users as $user) {
+        $content .= $user->license_number . "\n";
+    }
+
+    $fileName = "event_{$event->id}_registrations.txt";
+    Storage::disk('local')->put($fileName, $content);
+
+    return response()->download(storage_path("app/{$fileName}"))->deleteFileAfterSend(true);
+}
+
+
 }

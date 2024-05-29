@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 class AdminMiddleware
 {
@@ -16,7 +18,7 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next): Response|RedirectResponse
+    public function handle(Request $request, Closure $next): Response|RedirectResponse|BinaryFileResponse
     {
         $user = $request->user();
         if ($user && $user->is_admin === 1) { // Assurez-vous que la colonne dans votre base de données est nommée correctement
