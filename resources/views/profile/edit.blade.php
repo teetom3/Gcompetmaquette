@@ -1,60 +1,84 @@
 @include('header')
-    <h1>Mon Profil</h1>
+<h1 class="mb-4">Mon Profil</h1>
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-    <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+<form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mb-5">
+    @csrf
+    @method('PUT')
 
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" required><br><br>
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom:</label>
+        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+    </div>
 
-        <label for="surname">Prénom:</label>
-        <input type="text" id="surname" name="surname" value="{{ old('surname', $user->surname) }}" required><br><br>
+    <div class="mb-3">
+        <label for="surname" class="form-label">Prénom:</label>
+        <input type="text" id="surname" name="surname" class="form-control" value="{{ old('surname', $user->surname) }}" required>
+    </div>
 
-        <label for="date_of_birth">Date de naissance:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $user->date_of_birth) }}" required><br><br>
+    <div class="mb-3">
+        <label for="date_of_birth" class="form-label">Date de naissance:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{ old('date_of_birth', $user->date_of_birth) }}" required>
+    </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required><br><br>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+    </div>
 
-        <label for="phone">Téléphone:</label>
-        <input type="text" id="phone" name="phone" value="{{ old('phone', $user->phone) }}" required><br><br>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Téléphone:</label>
+        <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone', $user->phone) }}" required>
+    </div>
 
-        <label for="address">Adresse:</label>
-        <input type="text" id="address" name="address" value="{{ old('address', $user->address) }}" required><br><br>
+    <div class="mb-3">
+        <label for="address" class="form-label">Adresse:</label>
+        <input type="text" id="address" name="address" class="form-control" value="{{ old('address', $user->address) }}" required>
+    </div>
 
-        <label for="license_number">Numéro de licence:</label>
-        <input type="text" id="license_number" name="license_number" value="{{ old('license_number', $user->license_number) }}" required><br><br>
+    <div class="mb-3">
+        <label for="license_number" class="form-label">Numéro de licence:</label>
+        <input type="text" id="license_number" name="license_number" class="form-control" value="{{ old('license_number', $user->license_number) }}" required>
+    </div>
 
-        <label for="golf_index">Index Golf:</label>
-        <input type="text" id="golf_index" name="golf_index" value="{{ old('golf_index', $user->golf_index) }}" required><br><br>
+    <div class="mb-3">
+        <label for="golf_index" class="form-label">Index Golf:</label>
+        <input type="text" id="golf_index" name="golf_index" class="form-control" value="{{ old('golf_index', $user->golf_index) }}" required>
+    </div>
 
-        <label for="avatar">Avatar:</label>
-        <input type="file" id="avatar" name="avatar"><br><br>
+    <div class="mb-3">
+        <label for="avatar" class="form-label">Avatar:</label>
+        <input type="file" id="avatar" name="avatar" class="form-control">
+    </div>
 
-        <button type="submit">Mettre à jour</button>
-    </form>
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+</form>
 
-    <h2>Changer le mot de passe</h2>
-    <form method="POST" action="{{ route('profile.updatePassword') }}">
-        @csrf
-        @method('PUT')
+<h2 class="mb-4">Changer le mot de passe</h2>
+<form method="POST" action="{{ route('profile.updatePassword') }}">
+    @csrf
+    @method('PUT')
 
-        <label for="current_password">Mot de passe actuel:</label>
-        <input type="password" id="current_password" name="current_password" required><br><br>
+    <div class="mb-3">
+        <label for="current_password" class="form-label">Mot de passe actuel:</label>
+        <input type="password" id="current_password" name="current_password" class="form-control" required>
+    </div>
 
-        <label for="password">Nouveau mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <div class="mb-3">
+        <label for="password" class="form-label">Nouveau mot de passe:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+    </div>
 
-        <label for="password_confirmation">Confirmer le mot de passe:</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required><br><br>
+    <div class="mb-3">
+        <label for="password_confirmation" class="form-label">Confirmer le mot de passe:</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+    </div>
 
-        <button type="submit">Changer le mot de passe</button>
-    </form>
+    <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
+</form>
 @include('footer')
