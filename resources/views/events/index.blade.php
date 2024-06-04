@@ -1,5 +1,7 @@
 @include('header')
-<h1>Liste des événements</h1>
+
+<div class="container">
+<h2 class="m-5 fw-normal">Liste des événements</h2>
 
 
 @if(session('succes'))
@@ -10,8 +12,8 @@
 
 
 
-    <a href="{{ route('events.create') }}">Créer un nouvel événement</a>
-    <table>
+    <a href="{{ route('events.create') }}"><button class="btn btn-custom m-4">Créer un nouvel événement</button></a>
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -40,4 +42,5 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 @include('footer')

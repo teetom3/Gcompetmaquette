@@ -1,6 +1,7 @@
 <?php 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ class ProfileController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
+            if($user->avatar){
+                Storage::disk('public')->delete($user->avatar);
+            }
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
             $user->avatar = $avatarPath;
         }

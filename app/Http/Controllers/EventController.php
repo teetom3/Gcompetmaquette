@@ -69,7 +69,9 @@ class EventController extends Controller
 
     public function showEvents(Event $event)
     {
-        $events=Event::all();
+        $events=Event::where('is_active',1)
+    ->orderBy('date_event', 'asc')
+    ->get();
         return view('welcome', compact('events'));
     }
 
@@ -124,7 +126,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->route('events.index')->with('success', 'Événement supprimé avec succès.');
     }
 
 

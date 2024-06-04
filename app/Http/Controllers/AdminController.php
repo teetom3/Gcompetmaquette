@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,11 @@ class AdminController extends Controller
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->file('avatar')) {
+        if ($request->hasfile('avatar')) {
+
+            if($user->avatar){
+                Storage::disk('public')->delete($user->avatar);
+            }
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
             $user->avatar = $avatarPath;
         }
@@ -40,6 +45,20 @@ class AdminController extends Controller
         $user->update($request->except('avatar'));
 
         return redirect()->route('admin.users.index')->with('success', 'Utilisateur mis à jour avec succès.');
+    }
+
+    public function destroy(User $user) {
+        if ($user->avatar) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+
+        // Supprimer l'utilisateur de la base de données
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Utilisateur supprimé avec succès.');
+        
+
+        
     }
 }
 

@@ -1,6 +1,8 @@
 
 @include('header')
 
+<div class="container">
+
 <h1>Inscrire des joueurs à {{ $event->name }}</h1>
     
     @if (session('success'))
@@ -35,7 +37,7 @@
     </ul>
 
 
-
+</div>
 @include('footer')
 
 

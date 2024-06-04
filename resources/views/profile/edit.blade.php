@@ -1,4 +1,7 @@
 @include('header')
+
+
+<div class="container">
 <h1 class="mb-4">Mon Profil</h1>
 
 @if (session('success'))
@@ -81,4 +84,5 @@
 
     <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
 </form>
+</div>
 @include('footer')

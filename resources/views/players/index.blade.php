@@ -18,7 +18,7 @@
                         @if($player->avatar)
                             <img src="{{ asset('storage/' . $player->avatar) }}" alt="Avatar" width="50">
                         @else
-                            <img src="{{ asset('images/default-avatar.png') }}" alt="Avatar" width="50">
+                            <img src="{{ asset('storage/avatars/default-avatar.jpg') }}" alt="Avatar" width="50">
                         @endif
                     </td>
                     <td>{{ $player->name }}</td>

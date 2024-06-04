@@ -32,7 +32,7 @@ Route::post('/admin/events', [EventController::class,'store'])->name('events.sto
 
 Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
 Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
-
+Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
 
 Route::get('events/{event}/admin_register', [EventController::class, 'adminRegisterForm'])->name('events.admin.register');
@@ -94,4 +94,6 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users.index');
     Route::get('admin/users/{user}/edit', [AdminController::class, 'edit'])->name('admin.users.edit');
     Route::put('admin/users/{user}', [AdminController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+
 });

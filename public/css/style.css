@@ -6,3 +6,18 @@
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+.nav-link:hover{
+    font-size:2vh;
+    transition: all 0.5s ease-out;
+}
+.navbar-custom {
+    background-color: #C3FFC1; /* Vert clair */
+}
+
+.footer-custom{
+    background-color: #C3FFC1;
+}
+.btn-custom {
+    background-color: #C3FFC1;
+}

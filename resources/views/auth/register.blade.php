@@ -1,4 +1,4 @@
-@include('header')
+
     <h1>Register</h1>
 
     @if (session('success'))
@@ -46,4 +46,4 @@
         <button type="submit">Register</button>
     </form>
 
-    include('footer')
+    
