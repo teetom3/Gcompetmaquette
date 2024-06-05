@@ -22,7 +22,7 @@
                         <p class="card-text">Date: {{ date('d-M-y', strtotime($event->date_event)) }}</p>
                         <p class="card-text">Catégorie: {{ $event->category }}</p>
                         <p class="card-text">Places disponibles: {{ $event->places_available }}</p>
-                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-success">En savoir plus</a>
+                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-success">S'inscrire</a>
                     </div>
                 </div>
             </div>

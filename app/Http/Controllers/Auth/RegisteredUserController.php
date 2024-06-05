@@ -28,6 +28,7 @@ class RegisteredUserController extends Controller
             'golf_index' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'terms' => 'accepted',
         ]);
 
         $avatarPath = null;

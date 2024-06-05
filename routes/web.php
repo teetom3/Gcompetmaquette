@@ -93,7 +93,9 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
 
-
+    Route::get('/terms', function () {
+        return view('terms');
+    })->name('terms');
 
 
 

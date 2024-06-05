@@ -16,12 +16,12 @@
     <p><strong>Description :</strong> {{ $event->description }}</p>
     
     @if($event->image)
-                        <img class="card-img-top rounded" src="{{ asset('storage/' . $event->image) }}" style="width: 100%; ">
+                        <img class="card-img-top rounded" src="{{ asset('storage/' . $event->image) }}" style="width: 60%; ">
                         @else
-                        <img class="card-img-top rounded" src="{{ asset('storage/image/default-event.jpg') }}" style="width: 100%; ">
+                        <img class="card-img-top rounded" src="{{ asset('storage/image/default-event.jpg') }}" style="width: 60%; ">
                         @endif
 
-    <a href="{{ route('welcome') }}" class="btn btn-primary m-4">Retour à la liste des événements</a>
+    <a href="{{ route('welcome') }}" class="btn btn-outline-success m-4">Retour à la liste des événements</a>
     
     @auth
         @if ($event->users->contains(Auth::user()))
@@ -33,7 +33,7 @@
             <form id="register-form" action="{{ route('events.register', $event) }}" method="POST">
                 @csrf
             </form>
-            <a href="{{ route('events.register', $event) }}" onclick="event.preventDefault(); document.getElementById('register-form').submit();" class="btn btn-outline-success mb-3">S'inscrire</a>
+            <a href="{{ route('events.register', $event) }}" onclick="event.preventDefault(); document.getElementById('register-form').submit();" class="btn btn-outline-success m-4">S'inscrire</a>
         @endif
     @endauth
 

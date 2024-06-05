@@ -43,6 +43,12 @@
         <label for="avatar">Avatar:</label>
         <input type="file" id="avatar" name="avatar"><br><br>
 
+        <label>
+        <input type="checkbox" name="terms" required>
+        J'accepte les <a href="{{ route('terms') }}" target="_blank">conditions générales d'utilisation</a>
+    </label><br><br>
+
+
         <button type="submit">Register</button>
     </form>
 
