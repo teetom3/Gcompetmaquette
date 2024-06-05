@@ -95,5 +95,6 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('admin/users/{user}/edit', [AdminController::class, 'edit'])->name('admin.users.edit');
     Route::put('admin/users/{user}', [AdminController::class, 'update'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/search-players', [AdminController::class, 'search'])->name('admin.users.search');
 
 });

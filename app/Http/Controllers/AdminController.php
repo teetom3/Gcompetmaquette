@@ -14,6 +14,25 @@ class AdminController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function search(Request $request) {
+        
+
+        $query = $request->input('query');
+        $minIndex = $request->input('minIndex', 0);
+        $maxIndex = $request->input('maxIndex', 54);
+
+        $users = User::where(function($queryBuilder) use ($query) {
+                $queryBuilder->where('name', 'Like',"%{$query}%")
+                ->orWhere('surname','LIKE', "%{$query}%")
+                ->orWhere('email','LIKE', "%{$query}%")
+                ->orWhere('golf_index','LIKE', "%{$query}%");
+        })
+        ->whereRaw('CAST(golf_index AS UNSIGNED) BETWEEN ? AND ?', [$minIndex, $maxIndex])
+        ->get();
+
+            return response()->json($users);
+    }
+
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
