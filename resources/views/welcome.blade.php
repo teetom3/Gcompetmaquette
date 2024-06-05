@@ -1,6 +1,10 @@
 @include('header')
 
-
+@if(session('succes'))
+    <div style="color: green;">
+{{sessions('success')}}
+@endif
+    </div>
 
 <h2 class="m-5 fw-normal">Liste des événements</h2>
 <div class="container">

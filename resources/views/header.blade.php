@@ -15,7 +15,7 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('welcome') }}">
                 <img src="{{ asset('images/Logo-vert.jpg') }}" alt="Logo" class="logo_nav" style="width: 100px;">
@@ -33,6 +33,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="{{ route('profile.edit') }}">Mon Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="{{ route('contact.form') }}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="{{ route('logout') }}"

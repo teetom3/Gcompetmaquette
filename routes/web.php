@@ -5,6 +5,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\EventController;
 use \App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\ContactController;
 //authentification 
 
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -22,6 +23,18 @@ Route::get('players', [PlayerController::class, 'index'])->name('players.index')
 Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])->name('events.register');
 Route::post('/events/{event}/unregister', [EventRegistrationController::class, 'unregister'])->name('events.unregister');
 Route::get('/events/{id}', [EventController::class, 'showOneEvent'])->name('events.show');
+
+
+    // Routes pour le profil utilisateur
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+
+
+    //Formulaire de contact envoie de mail
+    Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+    Route::post('/contact', [ContactController::class, 'handleContact'])->name('contact.submit');
+
 });
 
 Route::middleware(AdminMiddleware::class)->group(function (){
@@ -82,10 +95,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 
 
-    // Routes pour le profil utilisateur
-Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+
 
 // Routes pour l'admin
 
