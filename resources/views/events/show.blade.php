@@ -18,7 +18,7 @@
     @if($event->image)
                         <img class="card-img-top rounded" src="{{ asset('storage/' . $event->image) }}" style="width: 60%; ">
                         @else
-                        <img class="card-img-top rounded" src="{{ asset('storage/image/default-event.jpg') }}" style="width: 60%; ">
+                        <img class="card-img-top rounded m-2" src="{{ asset('storage/image/default-event.jpg') }}" style="width: 60%; ">
                         @endif
 
     <a href="{{ route('welcome') }}" class="btn btn-outline-success m-4">Retour à la liste des événements</a>
