@@ -44,26 +44,25 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'phone' => 'required|string|max:15',
-            'address' => 'required|string|max:255',
-            'license_number' => 'required|string|max:50',
-            'golf_index' => 'required|string|max:10',
+            'email' => 'required|email|max:255',
+            'license_number' => 'required|string|max:255',
+            'golf_index' => 'required|string|max:255',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->hasfile('avatar')) {
+        $data = $request->all();
 
-            if($user->avatar){
+        if ($request->file('avatar')) {
+            // Supprimer l'ancienne avatar si elle existe
+            if ($user->avatar) {
                 Storage::disk('public')->delete($user->avatar);
             }
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = $avatarPath;
+            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
 
-        $user->update($request->except('avatar'));
+        $user->update($data);
 
-        return redirect()->route('admin.users.index')->with('success', 'Utilisateur mis à jour avec succès.');
+        return redirect()->route('admin.users.edit', $user->id)->with('success', 'Utilisateur mis à jour avec succès.');
     }
 
     public function destroy(User $user) {

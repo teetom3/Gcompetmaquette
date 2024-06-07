@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.users.update', $user) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.users.update', $user->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -37,9 +37,9 @@
         <div class="mb-3">
         <label for="license_number" class="form-label">Numéro de licence:</label>
         <input type="text" id="license_number" name="license_number" class="form-control" value="{{ old('license_number', $user->license_number) }}" required>
-    </div>
-
-    <div class="mb-3">
+   
+   
+        <div class="mb-3">
         <label for="golf_index" class="form-label">Index Golf:</label>
         <input type="text" id="golf_index" name="golf_index" class="form-control" value="{{ old('golf_index', $user->golf_index) }}" required>
     </div>
@@ -59,5 +59,9 @@
         <button type="submit" class="btn btn-danger mt-3">Supprimer</button>
     </form>
 </div>
+   
+    </div>
+
+    
 
 @include('footer')
